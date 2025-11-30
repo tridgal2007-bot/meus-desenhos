@@ -1,0 +1,24 @@
+{
+  "name": "redesia-pro",
+  "version": "1.0.0",
+  "description": "Assistente de IA especializado em redes de computadores",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev",
+    "deploy": "vercel deploy"
+  },
+  "keywords": ["network", "ai", "gemini", "chat"],
+  "author": "YAG",
+  "license": "MIT",
+  "dependencies": {
+    "mermaid": "^10.9.0",
+    "next": "^14.2.4",
+    "particles.js": "^2.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vercel": "^34.1.7"
+  }
+}
