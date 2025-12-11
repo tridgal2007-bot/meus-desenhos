@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exame de Admissão | Storm Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              comic: ['Bangers', 'cursive'],
+              tech: ['Rajdhani', 'sans-serif'],
+            },
+            colors: {
+              storm: {
+                accent: '#fcd34d', 
+                red: '#ef4444',
+                green: '#22c55e',
+                dark: '#0f172a',
+              }
+            },
+            animation: { 'eternal-zap': 'zap 2s infinite' },
+            keyframes: {
+              zap: {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '0.8', transform: 'scale(1.1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-storm-dark text-slate-50 overflow-x-hidden">
+    <div id="lightning-flash-overlay"></div>
+    <canvas id="rain-canvas"></canvas>
+    <canvas id="lightning-canvas"></canvas>
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-3 md:py-4 border-b-4 border-transparent">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group z-50 transform -skew-x-6 hover:skew-x-0 transition-transform">
+                <div class="p-1 md:p-2 bg-storm-accent border-2 border-black">
+                    <div class="animate-eternal-zap"><i data-lucide="zap" class="text-black w-6 h-6 md:w-8 md:h-8 fill-current"></i></div>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-comic text-2xl md:text-3xl tracking-wide text-white italic">STORM</span>
+                    <span class="font-comic text-lg md:text-xl text-storm-accent">ACADEMY</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-6">
+                 <a href="index.html" class="font-comic text-xl text-white hover:text-storm-accent uppercase tracking-wide">Início</a>
+                 <a href="classes.html" class="font-comic text-xl text-white hover:text-storm-accent uppercase tracking-wide">Individualidades</a>
+            </div>
+             <button id="mobile-toggle" class="lg:hidden text-white bg-black border-2 border-storm-accent p-2 transform -skew-x-12 z-50">
+                <i data-lucide="menu" class="w-8 h-8 skew-x-12"></i>
+            </button>
+        </div>
+         <div id="mobile-menu" class="fixed inset-0 bg-storm-dark/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 p-6">
+            <a href="index.html" class="mobile-link font-comic text-4xl text-white hover:text-storm-accent">Início</a>
+            <a href="classes.html" class="mobile-link font-comic text-4xl text-white hover:text-storm-accent">Individualidades</a>
+        </div>
+    </nav>
+
+    <div class="relative min-h-screen flex items-center justify-center z-30 pt-20">
+         <div class="moon"></div>
+         <div class="text-center px-4">
+             <div class="bg-storm-red text-white font-comic text-3xl px-6 py-2 transform -skew-x-12 inline-block mb-6 border-4 border-black shadow-[4px_4px_0px_#fff]">
+                 RESTRICTED AREA
+             </div>
+             <h1 class="font-comic text-6xl md:text-8xl text-white mb-4 transform -skew-x-6 drop-shadow-[4px_4px_0px_#000]">EXAME DE ADMISSÃO</h1>
+             <p class="font-tech text-2xl text-slate-300 max-w-2xl mx-auto mb-8">
+                 As inscrições para a próxima turma de heróis estão fechadas no momento. Junte-se ao Discord para ser notificado.
+             </p>
+             <a href="https://discord.gg/Ap2C35dW" target="_blank" class="inline-block btn-hero bg-[#5865F2] text-white text-2xl px-12 py-4 border-2 border-black shadow-[4px_4px_0px_#000] hover:bg-white hover:text-[#5865F2] hover:translate-y-[-4px] transition-all transform skew-x-[-12deg]">
+                 <div class="flex items-center gap-3 skew-x-[12deg]">
+                     <i data-lucide="lock" class="w-6 h-6"></i>
+                     ENTRAR NA LISTA DE ESPERA
+                 </div>
+             </a>
+         </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

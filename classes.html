@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storm Academy | Individualidades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              comic: ['Bangers', 'cursive'],
+              tech: ['Rajdhani', 'sans-serif'],
+            },
+            colors: {
+              storm: { accent: '#fcd34d', red: '#ef4444', green: '#22c55e', dark: '#0f172a' }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-storm-dark text-slate-50 overflow-x-hidden">
+
+    <div id="lightning-flash-overlay"></div>
+    <canvas id="rain-canvas"></canvas>
+    <canvas id="lightning-canvas"></canvas>
+    <div class="cloud-container">
+        <div class="cloud cloud-1"></div>
+        <div class="fog-layer"></div>
+    </div>
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 md:py-4 border-b-4 border-transparent">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group z-50 transform -skew-x-6 hover:skew-x-0 transition-transform">
+                <div class="p-1 md:p-2 bg-storm-accent border-2 border-black shadow-[2px_2px_0px_#000] md:shadow-[4px_4px_0px_#000] group-hover:bg-white transition-colors">
+                    <div class="animate-eternal-zap">
+                        <i data-lucide="zap" class="text-black w-6 h-6 md:w-8 md:h-8 fill-current"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-comic text-2xl md:text-3xl tracking-wide text-white drop-shadow-[2px_2px_0px_#000] italic">STORM</span>
+                    <span class="font-comic text-lg md:text-xl text-storm-accent drop-shadow-[1px_1px_0px_#000]">ACADEMY</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-6">
+                 <a href="https://www.roblox.com/share/g/535597375" target="_blank" class="flex items-center gap-2 bg-black/50 px-3 py-1 rounded border border-white/20 mr-4 hover:bg-white hover:text-black transition-all group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg" class="w-5 h-5 rounded-sm grayscale group-hover:grayscale-0 transition-all cursor-pointer" title="Available on Roblox">
+                    <span class="text-[10px] font-tech font-bold text-slate-400 group-hover:text-black uppercase tracking-widest">Grupo Roblox</span>
+                </a>
+                <a href="classes.html" class="font-comic text-xl text-white hover:text-storm-accent uppercase tracking-wide hover:scale-110 transition-transform">Individualidades</a>
+                <a href="exame.html" class="font-comic text-xl text-white hover:text-storm-accent uppercase tracking-wide hover:scale-110 transition-transform">Exame</a>
+                <a href="https://discord.gg/Ap2C35dW" target="_blank" class="btn-hero bg-[#5865F2] text-white px-6 py-2 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_#fff] hover:-translate-y-1">
+                    <div class="flex items-center gap-2 skew-x-12">DISCORD</div>
+                </a>
+            </div>
+            <button id="mobile-toggle" class="lg:hidden text-white bg-black border-2 border-storm-accent p-2 transform -skew-x-12"><i data-lucide="menu" class="w-8 h-8 skew-x-12"></i></button>
+        </div>
+        <div id="mobile-menu" class="fixed inset-0 bg-storm-dark/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 p-6">
+            <a href="https://www.roblox.com/share/g/535597375" target="_blank" class="flex flex-col items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg" class="w-16 h-16 rounded-lg mb-2 hover:scale-110 transition-transform">
+                <span class="text-white font-tech uppercase tracking-widest">Grupo Roblox</span>
+            </a>
+            <div class="w-full h-1 bg-white/10 my-2"></div>
+            <a href="classes.html" class="mobile-link font-comic text-4xl text-white hover:text-storm-accent">Individualidades</a>
+            <a href="exame.html" class="mobile-link font-comic text-4xl text-white hover:text-storm-accent">Exame</a>
+            <div class="w-full h-1 bg-white/10 my-2"></div>
+            <a href="https://discord.gg/Ap2C35dW" class="font-comic text-4xl text-[#5865F2]">Discord</a>
+        </div>
+    </nav>
+
+    <section class="py-24 bg-storm-dark relative min-h-screen flex items-start lg:items-center">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full pt-16 md:pt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-start">
+                
+                <!-- Left Column (List) - On mobile this comes first -->
+                <div class="order-1 reveal-on-scroll flex flex-col">
+                    <h2 class="font-comic text-6xl md:text-8xl text-white mb-6 md:mb-8 leading-[0.85] italic transform -skew-x-6 drop-shadow-[4px_4px_0px_#000]">
+                        LISTA DE <br/>
+                        <span class="text-storm-accent">QUIRKS</span>
+                    </h2>
+                    
+                    <p class="text-slate-400 mb-4 font-tech text-sm md:text-base">Selecione uma individualidade para ver os detalhes.</p>
+
+                    <!-- Lista com scroll - Altura reduzida no mobile para ver o conteúdo abaixo -->
+                    <div class="space-y-3 max-h-[250px] md:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar" id="class-buttons">
+                        <!-- JS Injection -->
+                    </div>
+                </div>
+
+                <!-- Right Column (Details) - Appears below list on mobile -->
+                <div class="order-2 lg:sticky lg:top-24">
+                    <div class="relative h-[400px] md:h-[600px] w-full border-4 border-black shadow-[10px_10px_0px_#333] md:shadow-[15px_15px_0px_#333] bg-black group transition-transform duration-500" id="card-container">
+                        
+                        <!-- Image Container -->
+                        <div id="class-image-container" class="absolute inset-0 m-2 border-2 border-white/10 overflow-hidden bg-slate-900">
+                            <img id="class-image" src="" class="w-full h-full object-cover filter contrast-125 saturate-150 transition-opacity duration-300 opacity-0">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        </div>
+
+                        <!-- Details Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-20 bg-black/95 border-2 border-white/20 p-4 md:p-6 transform -skew-x-2 md:-skew-x-3 shadow-[5px_5px_0px_rgba(255,255,255,0.1)]">
+                            
+                            <!-- Rarity Badge -->
+                            <div id="rarity-badge" class="inline-flex items-center gap-2 px-3 py-1 mb-2 md:mb-4 border border-current bg-black bg-opacity-50">
+                                <!-- JS Injection -->
+                            </div>
+                            
+                            <h3 id="class-title" class="font-comic text-3xl md:text-5xl text-white mb-2 md:mb-4 italic uppercase leading-none"></h3>
+                            
+                            <!-- Simple Description -->
+                            <p id="class-desc" class="text-slate-300 font-tech text-base md:text-xl leading-relaxed border-l-4 pl-4 border-storm-accent bg-white/5 p-3 md:p-4 rounded-r-lg">
+                                <!-- Descrição aqui -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
